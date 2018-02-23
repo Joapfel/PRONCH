@@ -88,7 +88,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
 					List<TabooWordSummary> phonTabuWords = phonologicalRepresentationOfTabuWords.get(ct);
 
-					// reduce search space via LCS
+//					 reduce search space via LCS
 					List<TabooWordSummary> longestCommonSubstrings = new ArrayList<>();
 					int longestCommonSubstringLenght = 0;
 					for (TabooWordSummary phonTabooWord : phonTabuWords) {
@@ -124,6 +124,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 							closestPhonTabooWord = phonTabuWord.getPhonologicalRepresentationOfTabooWord();
 							closestOriginalWord = phonTabuWord.getTabooWord();
 						}
+						
+						System.out.println(distance);
+						System.out.println("original: " + closestOriginalWord);
+						System.out.println("taboo: " + phonTabuWord.getTabooWord());
+						System.out.println();
 					}
 
 				}

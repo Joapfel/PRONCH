@@ -25,6 +25,12 @@ public class WeightedMeasures {
 		String[] beforeAndAfterLCSInput = s1.split(lcs, 2); 
 		String[] beforeAndAfterLCSTabooWord = s2.split(lcs, 2);
 		
+		System.out.println("beforeAndAfterLCSInput: " + beforeAndAfterLCSInput.length);
+		System.out.println("beforeAndAfterLCSTabooWord: " + beforeAndAfterLCSTabooWord.length);
+		for(String s : beforeAndAfterLCSInput){
+			System.out.println(s);
+		}
+		
 		if(lcs != null && lcs.length() > 0 && !(lcs.equals(s1) && lcs.equals(s2))){
 			
 			String beforeInput = "";
@@ -53,16 +59,55 @@ public class WeightedMeasures {
 			
 			//weighting
 			float before = dist.getDistance(beforeInput, beforeTabooWord);
+			//punish different lengths
+			if(beforeInput.length() != beforeTabooWord.length()){
+				float diff = Math.abs(beforeInput.length() - beforeTabooWord.length());
+				before += diff*5;
+			}
+			System.out.println("before: " + before);
+			if(lcs.length() >= beforeInput.length()*1.5){
+				before = before / lcs.length();
+				System.out.println("1");
+				System.out.println("before: " + beforeInput);
+				System.out.println("after: " + afterInput);
+				System.out.println("lcs: " + lcs);
+			}
+			
+			System.out.println("prefix w: " + prefixWeight);
+			System.out.println("suffix w: " + suffixWeight);
+			System.out.println(s1);
+			System.out.println(s2);
+			System.out.println("before: " + before);
+			
+			
 			int longerDistBefore = Math.max(beforeInput.length(), beforeTabooWord.length());
 			if(before > 0){
 				before = before / (longerDistBefore * prefixWeight);
 			}			
 			float after = dist.getDistance(afterInput, afterTabooWord);
+			//punish different lengths
+			if(afterInput.length() != afterTabooWord.length()){
+				float diff = Math.abs(afterInput.length() - afterTabooWord.length());
+				after += diff*5;
+			}
+			System.out.println("after: " + after);
+			if(lcs.length() >= afterInput.length()*1.5){
+				after = after / lcs.length();
+				System.out.println("2");
+				System.out.println("before: " + beforeInput);
+				System.out.println("after: " + afterInput);
+				System.out.println("lcs: " + lcs);
+			}
+			
+			System.out.println("after: " + after);
 
 			int longerDistAfter = Math.max(afterInput.length(), afterTabooWord.length());
 			if(after > 0){
 				after = after / longerDistAfter;
 			}
+			
+			
+			
 			distance = (before * prefixWeight) + (after * suffixWeight);
 			distance = distance / 2;
 
