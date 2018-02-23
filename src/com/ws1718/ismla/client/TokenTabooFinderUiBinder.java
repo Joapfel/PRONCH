@@ -28,6 +28,9 @@ public class TokenTabooFinderUiBinder extends Composite {
 
 	private static TokenTabooFinderUiBinderUiBinder uiBinder = GWT.create(TokenTabooFinderUiBinderUiBinder.class);
 	
+	private static final String LINK_WIKTIONARY = "https://de.wiktionary.org/wiki/";
+	private static final String LINK_GOOGLE = "http://www.google.com/search?q=";
+	
 	/**
 	 * distance evaluations
 	 */
@@ -38,7 +41,7 @@ public class TokenTabooFinderUiBinder extends Composite {
 	private static final String PERFECT = "appropriate";
 	
 	/**
-	 * 
+	 * colors
 	 */
 	private static final String CRITICAL_COLOR_CLASS = "footer-red";
 	private static final String CONCERNING_COLOR_CLASS = "footer-orange";
@@ -59,368 +62,22 @@ public class TokenTabooFinderUiBinder extends Composite {
 	public TokenTabooFinderUiBinder() {
 		initWidget(uiBinder.createAndBindUi(this));
 		sendRequest();
-
-		img_00.setResource(resources.german());
-		img_01.setResource(resources.spanish());
-		img_02.setResource(resources.persian());
-		img_03.setResource(resources.french());
-		img_04.setResource(resources.hindi());
-		img_05.setResource(resources.italian());
-		img_06.setResource(resources.japanese());
-		img_07.setResource(resources.korean());
-		img_08.setResource(resources.dutch());
-		img_09.setResource(resources.polish());
-		img_10.setResource(resources.portuguese());
-		img_11.setResource(resources.swedish());
-		img_12.setResource(resources.thai());
-		img_13.setResource(resources.turkish());
-		img_14.setResource(resources.chinese());
-		img_15.setResource(resources.arabic());
-		img_16.setResource(resources.russian());
 		
-		slots[0] = img_00;
-		slots[1] = img_01;
-		slots[2] = img_02;
-		slots[3] = img_03;
-		slots[4] = img_04;
-		slots[5] = img_05;
-		slots[6] = img_06;
-		slots[7] = img_07;
-		slots[8] = img_08;
-		slots[9] = img_09;
-		slots[10] = img_10;
-		slots[11] = img_11;
-		slots[12] = img_12;
-		slots[13] = img_13;
-		slots[14] = img_14;
-		slots[15] = img_15;
-		slots[16] = img_16;
-		
-		tabooWords[0] = tabooWord_00;
-		tabooWords[1] = tabooWord_01;
-		tabooWords[2] = tabooWord_02;
-		tabooWords[3] = tabooWord_03;
-		tabooWords[4] = tabooWord_04;
-		tabooWords[5] = tabooWord_05;
-		tabooWords[6] = tabooWord_06;
-		tabooWords[7] = tabooWord_07;
-		tabooWords[8] = tabooWord_08;
-		tabooWords[9] = tabooWord_09;
-		tabooWords[10] = tabooWord_10;
-		tabooWords[11] = tabooWord_11;
-		tabooWords[12] = tabooWord_12;
-		tabooWords[13] = tabooWord_13;
-		tabooWords[14] = tabooWord_14;
-		tabooWords[15] = tabooWord_15;
-		tabooWords[16] = tabooWord_16;
-		
-		footers[0] = footer_00;
-		footers[1] = footer_01;
-		footers[2] = footer_02;
-		footers[3] = footer_03;
-		footers[4] = footer_04;
-		footers[5] = footer_05;
-		footers[6] = footer_06;
-		footers[7] = footer_07;
-		footers[8] = footer_08;
-		footers[9] = footer_09;
-		footers[10] = footer_10;
-		footers[11] = footer_11;
-		footers[12] = footer_12;
-		footers[13] = footer_13;
-		footers[14] = footer_14;
-		footers[15] = footer_15;
-		footers[16] = footer_16;
-		
-		status[0] = status_00;
-		status[1] = status_01;
-		status[2] = status_02;
-		status[3] = status_03;
-		status[4] = status_04;
-		status[5] = status_05;
-		status[6] = status_06;
-		status[7] = status_07;
-		status[8] = status_08;
-		status[9] = status_09;
-		status[10] = status_10;
-		status[11] = status_11;
-		status[12] = status_12;
-		status[13] = status_13;
-		status[14] = status_14;
-		status[15] = status_15;
-		status[16] = status_16;
-		
-		languages[0] = language_00;
-		languages[1] = language_01;
-		languages[2] = language_02;
-		languages[3] = language_03;
-		languages[4] = language_04;
-		languages[5] = language_05;
-		languages[6] = language_06;
-		languages[7] = language_07;
-		languages[8] = language_08;
-		languages[9] = language_09;
-		languages[10] = language_10;
-		languages[11] = language_11;
-		languages[12] = language_12;
-		languages[13] = language_13;
-		languages[14] = language_14;
-		languages[15] = language_15;
-		languages[16] = language_16;
-		
-		
-		translations[0] = translation_00;
-		translations[1] = translation_01;
-		translations[2] = translation_02;
-		translations[3] = translation_03;
-		translations[4] = translation_04;
-		translations[5] = translation_05;
-		translations[6] = translation_06;
-		translations[7] = translation_07;
-		translations[8] = translation_08;
-		translations[9] = translation_09;
-		translations[10] = translation_10;
-		translations[11] = translation_11;
-		translations[12] = translation_12;
-		translations[13] = translation_13;
-		translations[14] = translation_14;
-		translations[15] = translation_15;
-		translations[16] = translation_16;
-		
+		cardContainer.setStyleName("row justify-content-center");System.out.println("__start__");
 	}
 	
 	@UiField
+	HTMLPanel applicationHeading;
+	@UiField
+	Image loader;
+	@UiField
 	HTMLPanel applicationBody;
-
 	@UiField
 	TextBox inputBox;
-	@UiField
-	Image img_00;
-	@UiField
-	Image img_01;
-	@UiField
-	Image img_02;
-	@UiField
-	Image img_03;
-	@UiField
-	Image img_04;
-	@UiField
-	Image img_05;
-	@UiField
-	Image img_06;
-	@UiField
-	Image img_07;
-	@UiField
-	Image img_08;
-	@UiField
-	Image img_09;
-	@UiField
-	Image img_10;
-	@UiField
-	Image img_11;
-	@UiField
-	Image img_12;
-	@UiField
-	Image img_13;
-	@UiField
-	Image img_14;
-	@UiField
-	Image img_15;
-	@UiField
-	Image img_16;
-
-	private Image[] slots = new Image[17];
-
-	@UiField
-	HTMLPanel tabooWord_00;
-	@UiField
-	HTMLPanel tabooWord_01;
-	@UiField
-	HTMLPanel tabooWord_02;
-	@UiField
-	HTMLPanel tabooWord_03;
-	@UiField
-	HTMLPanel tabooWord_04;
-	@UiField
-	HTMLPanel tabooWord_05;
-	@UiField
-	HTMLPanel tabooWord_06;
-	@UiField
-	HTMLPanel tabooWord_07;
-	@UiField
-	HTMLPanel tabooWord_08;
-	@UiField
-	HTMLPanel tabooWord_09;
-	@UiField
-	HTMLPanel tabooWord_10;
-	@UiField
-	HTMLPanel tabooWord_11;
-	@UiField
-	HTMLPanel tabooWord_12;
-	@UiField
-	HTMLPanel tabooWord_13;
-	@UiField
-	HTMLPanel tabooWord_14;
-	@UiField
-	HTMLPanel tabooWord_15;
-	@UiField
-	HTMLPanel tabooWord_16;
-	
-	private HTMLPanel[] tabooWords = new HTMLPanel[17];
-	
-	@UiField
-	HTMLPanel footer_00;
-	@UiField
-	HTMLPanel footer_01;
-	@UiField
-	HTMLPanel footer_02;
-	@UiField
-	HTMLPanel footer_03;
-	@UiField
-	HTMLPanel footer_04;
-	@UiField
-	HTMLPanel footer_05;
-	@UiField
-	HTMLPanel footer_06;
-	@UiField
-	HTMLPanel footer_07;
-	@UiField
-	HTMLPanel footer_08;
-	@UiField
-	HTMLPanel footer_09;
-	@UiField
-	HTMLPanel footer_10;
-	@UiField
-	HTMLPanel footer_11;
-	@UiField
-	HTMLPanel footer_12;
-	@UiField
-	HTMLPanel footer_13;
-	@UiField
-	HTMLPanel footer_14;
-	@UiField
-	HTMLPanel footer_15;
-	@UiField
-	HTMLPanel footer_16;
-	
-	private HTMLPanel[] footers = new HTMLPanel[17];
 	
 	
 	@UiField
-	HTMLPanel status_00;
-	@UiField
-	HTMLPanel status_01;
-	@UiField
-	HTMLPanel status_02;
-	@UiField
-	HTMLPanel status_03;
-	@UiField
-	HTMLPanel status_04;
-	@UiField
-	HTMLPanel status_05;
-	@UiField
-	HTMLPanel status_06;
-	@UiField
-	HTMLPanel status_07;
-	@UiField
-	HTMLPanel status_08;
-	@UiField
-	HTMLPanel status_09;
-	@UiField
-	HTMLPanel status_10;
-	@UiField
-	HTMLPanel status_11;
-	@UiField
-	HTMLPanel status_12;
-	@UiField
-	HTMLPanel status_13;
-	@UiField
-	HTMLPanel status_14;
-	@UiField
-	HTMLPanel status_15;
-	@UiField
-	HTMLPanel status_16;
-	
-	private HTMLPanel[] status = new HTMLPanel[17];
-	
-	
-	@UiField
-	HTMLPanel language_00;
-	@UiField
-	HTMLPanel language_01;
-	@UiField
-	HTMLPanel language_02;
-	@UiField
-	HTMLPanel language_03;
-	@UiField
-	HTMLPanel language_04;
-	@UiField
-	HTMLPanel language_05;
-	@UiField
-	HTMLPanel language_06;
-	@UiField
-	HTMLPanel language_07;
-	@UiField
-	HTMLPanel language_08;
-	@UiField
-	HTMLPanel language_09;
-	@UiField
-	HTMLPanel language_10;
-	@UiField
-	HTMLPanel language_11;
-	@UiField
-	HTMLPanel language_12;
-	@UiField
-	HTMLPanel language_13;
-	@UiField
-	HTMLPanel language_14;
-	@UiField
-	HTMLPanel language_15;
-	@UiField
-	HTMLPanel language_16;
-	
-	private HTMLPanel[] languages = new HTMLPanel[17];
-	
-	
-	@UiField
-	HTMLPanel translation_00;
-	@UiField
-	HTMLPanel translation_01;
-	@UiField
-	HTMLPanel translation_02;
-	@UiField
-	HTMLPanel translation_03;
-	@UiField
-	HTMLPanel translation_04;
-	@UiField
-	HTMLPanel translation_05;
-	@UiField
-	HTMLPanel translation_06;
-	@UiField
-	HTMLPanel translation_07;
-	@UiField
-	HTMLPanel translation_08;
-	@UiField
-	HTMLPanel translation_09;
-	@UiField
-	HTMLPanel translation_10;
-	@UiField
-	HTMLPanel translation_11;
-	@UiField
-	HTMLPanel translation_12;
-	@UiField
-	HTMLPanel translation_13;
-	@UiField
-	HTMLPanel translation_14;
-	@UiField
-	HTMLPanel translation_15;
-	@UiField
-	HTMLPanel translation_16;
-	
-	
-	private HTMLPanel[] translations = new HTMLPanel[17];
-	
-
+	HTMLPanel cardContainer;
 
 	private String getText() {
 		return inputBox.getText();
@@ -433,38 +90,32 @@ public class TokenTabooFinderUiBinder extends Composite {
 			public void onKeyUp(KeyUpEvent event) {
 				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 					
+					
+					loader.setResource(resources.ajaxLoader());
+					cardContainer.clear();
 					applicationBody.setVisible(false);
-
-
-					img_00.setResource(resources.ajaxLoader());
-					img_01.setResource(resources.ajaxLoader());
-					img_02.setResource(resources.ajaxLoader());
-					img_03.setResource(resources.ajaxLoader());
-					img_04.setResource(resources.ajaxLoader());
-					img_05.setResource(resources.ajaxLoader());
-					img_06.setResource(resources.ajaxLoader());
-					img_07.setResource(resources.ajaxLoader());
-					img_08.setResource(resources.ajaxLoader());
-					img_09.setResource(resources.ajaxLoader());
-					img_10.setResource(resources.ajaxLoader());
-					img_11.setResource(resources.ajaxLoader());
-					img_12.setResource(resources.ajaxLoader());
-					img_13.setResource(resources.ajaxLoader());
-					img_14.setResource(resources.ajaxLoader());
-					img_15.setResource(resources.ajaxLoader());
-					img_16.setResource(resources.ajaxLoader());
 
 					final String input = getText();
 					greetingService.greetServer(input, new AsyncCallback<List<ClientTabooWordSummary>>() {
 
 						@Override
 						public void onSuccess(List<ClientTabooWordSummary> result) {
+							
+							loader.setVisible(false);
 
 							for (int i = 0; i < result.size(); i++) {
+								
+								StringBuilder sbWiktionaryLink = new StringBuilder();
+								sbWiktionaryLink.append(LINK_WIKTIONARY);
+								
+								StringBuilder sbGoogleLink = new StringBuilder();
+								sbGoogleLink.append(LINK_GOOGLE);
 								
 								final ClientTabooWordSummary t = result.get(i);
 								final LanguageCodes l = t.getLanguage();
 								final String tabooWord = t.getTabooWord();
+								sbWiktionaryLink.append(tabooWord);
+								sbGoogleLink.append(tabooWord);
 								final float distance = t.getDistanceToInput();
 								final String evaluated = distanceEvaluation(distance); 
 								final String colorClass = distanceColorClass(distance);
@@ -473,149 +124,101 @@ public class TokenTabooFinderUiBinder extends Composite {
 									translation = t.getTranslation();
 								}
 								
+								LanguageCard lc = new LanguageCard();
+								lc.getCardWrapper().setStyleName("col-lg-2 col-md-4 col-sm-12");
+								lc.getTabooWord().getElement().setInnerHTML(tabooWord);
+								lc.getFooter().setStyleName(colorClass);
+								lc.getStatus().getElement().setInnerHTML(evaluated);
+								lc.getLanguage().getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
+								lc.getTranslation().getElement().setInnerHTML(translation);
+								lc.getWiktionaryLink().setHref(sbWiktionaryLink.toString());
+								lc.getGoogleLink().setHref(sbGoogleLink.toString());
+								
+								
+								
 								
 
 								switch (l) {
 
 								case DEU:
-									slots[i].setResource(resources.german());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.german());
 									break;
+									
 								case SPA:
-									slots[i].setResource(resources.spanish());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.spanish());
 									break;
+									
 								case FAS:
-									slots[i].setResource(resources.persian());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.persian());
 									break;
+									
 								case FRA:
-									slots[i].setResource(resources.french());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.french());
 									break;
+									
 								case HIN:
-									slots[i].setResource(resources.hindi());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.hindi());
 									break;
+									
 								case ITA:
-									slots[i].setResource(resources.italian());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.italian());
 									break;
-								case JPN:
-									slots[i].setResource(resources.japanese());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									
+								case JPN:		
+									lc.getImg().setResource(resources.japanese());
 									break;
-								case KOR:
-									slots[i].setResource(resources.korean());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									
+								case KOR:									
+									lc.getImg().setResource(resources.korean());
 									break;
-								case NLD:
-									slots[i].setResource(resources.dutch());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									
+								case NLD:	
+									lc.getImg().setResource(resources.dutch());
 									break;
+									
 								case POL:
-									slots[i].setResource(resources.polish());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.polish());
 									break;
+									
 								case POR:
-									slots[i].setResource(resources.portuguese());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.portuguese());
 									break;
+									
 								case SWE:
-									slots[i].setResource(resources.swedish());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.swedish());
 									break;
-								case TH:
-									slots[i].setResource(resources.thai());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									
+								case TH:			
+									lc.getImg().setResource(resources.thai());
 									break;
-								case TUR:
-									slots[i].setResource(resources.turkish());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									
+								case TUR:	
+									lc.getImg().setResource(resources.turkish());
 									break;
-								case CMN:
-									slots[i].setResource(resources.chinese());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									
+								case CMN:	
+									lc.getImg().setResource(resources.chinese());
 									break;
+									
 								case ARA:
-									slots[i].setResource(resources.arabic());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.arabic());
 									break;
+									
 								case RUS:
-									slots[i].setResource(resources.russian());
-									tabooWords[i].getElement().setInnerHTML(tabooWord);
-									footers[i].setStyleName(colorClass);
-									status[i].getElement().setInnerHTML(evaluated);
-									languages[i].getElement().setInnerHTML(LanguageCodes.fullLanguageName(l));
-									translations[i].getElement().setInnerHTML(translation);
+									lc.getImg().setResource(resources.russian());
 									break;
 
 								default:
 									break;
+								}
+								
+								
+								cardContainer.add(lc);
+								
+								if((i != 0) && ((i+1) % 4 == 0)){
+									HTMLPanel h = new HTMLPanel("");
+									h.addStyleName("w-100 d-none d-lg-block margin");
+									cardContainer.add(h);
 								}
 							}
 							
@@ -655,7 +258,7 @@ public class TokenTabooFinderUiBinder extends Composite {
 	
 	private String distanceColorClass(float distance){
 		
-		if(distance <= 0.2){
+		if(distance <= 0.25){
 			return CRITICAL_COLOR_CLASS;
 		}else if(distance <= 0.4){
 			return CONCERNING_COLOR_CLASS;

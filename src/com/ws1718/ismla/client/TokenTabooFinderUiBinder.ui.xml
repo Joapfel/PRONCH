@@ -2,9 +2,18 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.dom.client">
 	<ui:style>
+	
 	.applicationHeadingContainer {
 		padding: 80px 0 80px 0;
 		background-color: black;
+		width: 100%;
+	}
+	
+	.applicationBodyContainer {
+		background-color: black;
+	}
+	
+	.cardContainer{
 		width: 100%;
 	}
 	
@@ -24,34 +33,16 @@
 		border-radius: 5px;
 	}
 	
-	.applicationBodyContainer {
-		padding: 20px 0 0 0;
-		background-color: black;
-	}
 	
-	.footer {
-		background-color: black;
-		color: white;
-	}
 	
 	.applicationNamefooter {
 		background-color: black;
-	}
-	
-	.card-container {
-		margin-top: 20px;
 	}
 	
 	.language {
 		
 	}
 	</ui:style>
-
-
-
-
-
-
 
 	<g:HTMLPanel>
 
@@ -60,7 +51,7 @@
 				<div class="row">
 					<div class="col-lg-2 col-sm-12"></div>
 					<div class="col-lg-8 col-md-12 col-sm-12">
-						<g:HTMLPanel styleName="{style.applicationHeading}">sounds like</g:HTMLPanel>
+						<g:HTMLPanel ui:field="applicationHeading" styleName="{style.applicationHeading}">sounds like <g:Image ui:field="loader"></g:Image></g:HTMLPanel>
 						<div class="inputWrapper">
 							<g:TextBox styleName="{style.input}" ui:field="inputBox"></g:TextBox>
 						</div>
@@ -73,453 +64,10 @@
 
 		<g:HTMLPanel ui:field="applicationBody" styleName="{style.applicationBodyContainer}">
 			<div class="container-fluid">
-
-				<div class="row justify-content-center">
-
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_00"></g:Image>
-								<g:HTMLPanel ui:field="language_00" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_00"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_00"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_00">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_00"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_01"></g:Image>
-								<g:HTMLPanel ui:field="language_01" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_01"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_01"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_01">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_01"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_02"></g:Image>
-								<g:HTMLPanel ui:field="language_02" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_02"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_02"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_02">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_02"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_03"></g:Image>
-								<g:HTMLPanel ui:field="language_03" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_03"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_03"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_03">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_03"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-
-					<!-- Force next columns to break to new line -->
-					<div class="w-100 d-none d-lg-block margin"></div>
-
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_04"></g:Image>
-								<g:HTMLPanel ui:field="language_04" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_04"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_04"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_04">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_04"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_05"></g:Image>
-								<g:HTMLPanel ui:field="language_05" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_05"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_05"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_05">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_05"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_06"></g:Image>
-								<g:HTMLPanel ui:field="language_06" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_06"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_06"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_06">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_06"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_07"></g:Image>
-								<g:HTMLPanel ui:field="language_07" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_07"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_07"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_07">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_07"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-
-					<!-- Force next columns to break to new line -->
-					<div class="w-100 d-none d-lg-block margin"></div>
-
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_08"></g:Image>
-								<g:HTMLPanel ui:field="language_08" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_08"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_08"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_08">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_08"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_09"></g:Image>
-								<g:HTMLPanel ui:field="language_09" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_09"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_09"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_09">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_09"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_10"></g:Image>
-								<g:HTMLPanel ui:field="language_10" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_10"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_10"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_10">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_10"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_11"></g:Image>
-								<g:HTMLPanel ui:field="language_11" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_11"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_11"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_11">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_11"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-					</div>
-
-					<!-- Force next columns to break to new line -->
-					<div class="w-100 d-none d-lg-block margin"></div>
-
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_12"></g:Image>
-								<g:HTMLPanel ui:field="language_12" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_12"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_12"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_12">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_12"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_13"></g:Image>
-								<g:HTMLPanel ui:field="language_13" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_13"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_13"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_13">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_13"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_14"></g:Image>
-								<g:HTMLPanel ui:field="language_14" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_14"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_14"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_14">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_14"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_15"></g:Image>
-								<g:HTMLPanel ui:field="language_15" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_15"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_15"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_15">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_15"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-
-					</div>
-
-					<!-- Force next columns to break to new line -->
-					<div class="w-100 d-none d-lg-block margin"></div>
-
-					<div class="col-lg-2 col-md-4 col-sm-12">
-
-						<div class="card" style="max-width: 20rem;">
-							<div class="card-header">
-								<g:Image ui:field="img_16"></g:Image>
-								<g:HTMLPanel ui:field="language_16" styleName="{style.language}"></g:HTMLPanel>
-							</div>
-							<div class="card-body">
-								<h4 class="card-title">
-									<g:HTMLPanel ui:field="tabooWord_16"></g:HTMLPanel>
-								</h4>
-								<p class="card-text">
-									
-									<g:HTMLPanel ui:field="translation_16"></g:HTMLPanel>
-								</p>
-							</div>
-
-							<g:HTMLPanel styleName="{style.footer}" ui:field="footer_16">
-								<div class="card-footer">
-									<g:HTMLPanel ui:field="status_16"></g:HTMLPanel>
-								</div>
-							</g:HTMLPanel>
-						</div>
-					</div>
-				</div>
+				<g:HTMLPanel ui:field="cardContainer" styleName="{style.cardContainer}"></g:HTMLPanel>
 			</div>
 		</g:HTMLPanel>
+			
 	</g:HTMLPanel>
-
-
 
 </ui:UiBinder> 

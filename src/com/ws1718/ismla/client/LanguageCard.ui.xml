@@ -1,0 +1,50 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	.cardWrapper{
+		width: 100%;
+	}
+	
+	.language {
+		
+	}
+	
+	.link{
+		
+	}
+	
+	.footer {
+		background-color: black;
+		color: white;
+	}
+	
+	</ui:style>
+	
+	<g:HTMLPanel ui:field="cardWrapper" styleName="{style.cardWrapper}">
+		<div class="card" style="max-width: 20rem;">
+			<div class="card-header">
+				<g:Image ui:field="img"></g:Image>
+				<g:HTMLPanel ui:field="language" styleName="{style.language}"></g:HTMLPanel>
+			</div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<g:HTMLPanel ui:field="tabooWord"></g:HTMLPanel>
+				</h4>
+				<p class="card-text">
+					<g:HTMLPanel ui:field="translation"></g:HTMLPanel>
+					<g:Anchor ui:field="linkW" styleName="{style.link}">wiktionary</g:Anchor> | 
+					<g:Anchor ui:field="linkG" styleName="{style.link}">google</g:Anchor>
+				</p>
+			</div>
+			
+			<g:HTMLPanel styleName="{style.footer}" ui:field="footer">
+				<div class="card-footer">
+					<g:HTMLPanel ui:field="status"></g:HTMLPanel>
+				</div>
+			</g:HTMLPanel>
+		</div>
+	</g:HTMLPanel>
+	
+</ui:UiBinder> 
