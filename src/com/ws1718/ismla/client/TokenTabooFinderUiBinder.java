@@ -242,7 +242,7 @@ public class TokenTabooFinderUiBinder extends Composite {
 	
 	private String distanceEvaluation(float distance){
 		
-		if(distance <= 0.2){
+		if(distance <= 0.25){
 			return CRITICAL;
 		}else if(distance <= 0.4){
 			return CONCERNING;

@@ -33,6 +33,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	private static final String ARABIC_TRANSLIT = TRANSLIT_LOCATION + "Arabic_chat.txt";
 	private static final String RUSSIAN_TRANSLIT = TRANSLIT_LOCATION + "Russian_translit.txt";
 	private static final String PERSIAN_TRANSLIT = TRANSLIT_LOCATION + "Persian_chat.txt";
+	private static final String THAI_TRANSLIT = TRANSLIT_LOCATION + "Thai_royal_transcription.txt";
 
 	// tabu lists source
 	private static final String TABU_LOCATION = "/tabuLists/";
@@ -55,8 +56,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		/*
 		 * input transformation to phonetic representation
 		 */
-		final Map<LanguageCodes, String> phonologicalRepresentationsOfInput = getPhonologicalRepresentationsOfInput(
+		Map<LanguageCodes, String> phonologicalRepresentationsOfInput = getPhonologicalRepresentationsOfInput(
 				input);
+		
+		final List<String> thaiTranslit = getLinesFromFile(THAI_TRANSLIT);
+		final String thaiInputTransliterated = LanguageTransliterator.transcribeRoyalThaiTranscriptionToPhon(input, thaiTranslit);
+		phonologicalRepresentationsOfInput.put(LanguageCodes.TH, thaiInputTransliterated);
+		
 		// create
 		Map<LanguageCodes, String> simplePhonologicalRepresentationOfInput = PhoneticTransliterator
 				.getSimplePhonologicalRepresentationOfInput(ipaSimple, phonologicalRepresentationsOfInput);
@@ -65,6 +71,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		 * tabu word transformation to phonetic representation
 		 */
 		Map<LanguageCodes, List<TabooWordSummary>> phonologicalRepresentationOfTabuWords = getPhonologicalRepresentationOfTabuWords();
+		
+		
+		
 		// add simple phon
 		phonologicalRepresentationOfTabuWords = PhoneticTransliterator
 				.getSimplePhonologicalRepresentationOfTabuWords(ipaSimple, phonologicalRepresentationOfTabuWords);
@@ -125,10 +134,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 							closestOriginalWord = phonTabuWord.getTabooWord();
 						}
 						
-						System.out.println(distance);
-						System.out.println("original: " + closestOriginalWord);
-						System.out.println("taboo: " + phonTabuWord.getTabooWord());
-						System.out.println();
 					}
 
 				}
@@ -141,7 +146,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 			Map<String, String> araTranslations = getMapForColumns(PREFIX_TABU + LanguageCodes.ARA + SUFFIX_TABU, 1, 2);
 			Map<String, String> fasTranslations = getMapForColumns(PREFIX_TABU + LanguageCodes.FAS + SUFFIX_TABU, 1, 2);
 			Map<String, String> jpnTranslations = getMapForColumns(PREFIX_TABU + LanguageCodes.JPN + SUFFIX_TABU, 1, 2);
-			Map<String, String> thTranslations = getMapForColumns(PREFIX_TABU + LanguageCodes.TH + SUFFIX_TABU, 1, 2);
+			Map<String, String> thTranslations = getMapForColumns(PREFIX_TABU + LanguageCodes.TH + SUFFIX_TABU, 0, 2);
 			
 			for(ClientTabooWordSummary t : rval){
 				LanguageCodes l = t.getLanguage();
@@ -191,14 +196,16 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	private Map<LanguageCodes, String> getPhonologicalRepresentationsOfInput(String input) {
 
 		final List<String> arabicChat = getLinesFromFile(ARABIC_TRANSLIT);
-		String arabicInputTransliterated = LanguageTransliterator.transcribeArabicToOfficialTranscription(input,
+		final String arabicInputTransliterated = LanguageTransliterator.transcribeArabicToOfficialTranscription(input,
 				arabicChat);
 
 		final List<String> russianTranslit = getLinesFromFile(RUSSIAN_TRANSLIT);
-		String russianInputTransliterated = LanguageTransliterator.transcribeToRussian(input, russianTranslit);
+		final String russianInputTransliterated = LanguageTransliterator.transcribeToRussian(input, russianTranslit);
 		
 		final List<String> persianChat = getLinesFromFile(PERSIAN_TRANSLIT);
-		String persianInputTransliterated = LanguageTransliterator.transcribeInternetPersian(input, persianChat);
+		final String persianInputTransliterated = LanguageTransliterator.transcribeInternetPersian(input, persianChat);
+		
+		
 
 		List<SourceTransliteration> transliterations = new ArrayList<>();
 		transliterations.add(new SourceTransliteration(russianInputTransliterated, LanguageCodes.RUS));
@@ -259,6 +266,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 			summary.add(new TabooWordSummary(th, originalThaiTabooWords.get(i),
 					phonologicalRepresentationOfThaiTabooWords.get(i)));
 		}
+		rval.put(th, summary);
 
 		/*
 		 * arabic
