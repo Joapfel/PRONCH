@@ -28,8 +28,8 @@ public class TokenTabooFinderUiBinder extends Composite {
 
 	private static TokenTabooFinderUiBinderUiBinder uiBinder = GWT.create(TokenTabooFinderUiBinderUiBinder.class);
 	
-	private static final String LINK_WIKTIONARY = "https://de.wiktionary.org/wiki/";
-	private static final String LINK_GOOGLE = "http://www.google.com/search?q=";
+	private static final String LINK_WIKTIONARY = "https://en.wiktionary.org/wiki/";
+	private static final String LINK_GOOGLE = "https://translate.google.com/?hl=de#auto/en/";
 	
 	/**
 	 * distance evaluations
@@ -113,7 +113,7 @@ public class TokenTabooFinderUiBinder extends Composite {
 								
 								final ClientTabooWordSummary t = result.get(i);
 								final LanguageCodes l = t.getLanguage();
-								final String tabooWord = t.getTabooWord();
+								String tabooWord = t.getTabooWord();
 								sbWiktionaryLink.append(tabooWord);
 								sbGoogleLink.append(tabooWord);
 								final float distance = t.getDistanceToInput();

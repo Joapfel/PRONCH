@@ -5,12 +5,12 @@
 	
 	.applicationHeadingContainer {
 		padding: 80px 0 80px 0;
-		background-color: black;
+		background-color: #bfbfbf;
 		width: 100%;
 	}
 	
 	.applicationBodyContainer {
-		background-color: black;
+		background-color: #bfbfbf;
 	}
 	
 	.cardContainer{
