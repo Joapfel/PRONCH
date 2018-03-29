@@ -20,6 +20,7 @@
 		color: white;
 	}
 	
+
 	</ui:style>
 	
 	<g:HTMLPanel ui:field="cardWrapper" styleName="{style.cardWrapper}">
@@ -34,7 +35,7 @@
 				</h4>
 				<p class="card-text">
 					<g:HTMLPanel ui:field="translation"></g:HTMLPanel>
-					<g:Anchor ui:field="linkW" styleName="{style.link}">wiktionary</g:Anchor> | 
+					<g:Anchor ui:field="linkW" styleName="{style.link}">wiktionary</g:Anchor> |
 					<g:Anchor ui:field="linkG" styleName="{style.link}">google</g:Anchor>
 				</p>
 			</div>
