@@ -12,7 +12,6 @@ import java.util.Map;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ws1718.ismla.client.GreetingService;
-import com.ws1718.ismla.server.distance.Levenshtein;
 import com.ws1718.ismla.server.distance.SimilarityMeasures;
 import com.ws1718.ismla.server.distance.WeightedMeasures;
 import com.ws1718.ismla.server.transliteration.LanguageTransliterator;
@@ -78,19 +77,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		phonologicalRepresentationOfTabuWords = PhoneticTransliterator
 				.getSimplePhonologicalRepresentationOfTabuWords(ipaSimple, phonologicalRepresentationOfTabuWords);
 
-		Levenshtein dist = new Levenshtein();
-
 		// go through simple representations of input
 		for (LanguageCodes c : simplePhonologicalRepresentationOfInput.keySet()) {
 
 			String simplePhonInput = simplePhonologicalRepresentationOfInput.get(c);
 
 			float lowestDistance = 1000;
-			String closestSimplePhonTabuWord = "";
-			String closestPhonTabooWord = "";
 			String closestOriginalWord = "";
-			String longestCommonSubstring = "";
-
+			
 			// go through simple representations of taboo words
 			for (LanguageCodes ct : phonologicalRepresentationOfTabuWords.keySet()) {
 				if (c.equals(ct)) {
@@ -120,17 +114,12 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 					// calculate the distance
 					for (TabooWordSummary phonTabuWord : phonTabuWords) {
 						String simplePhonTabooWord = phonTabuWord.getSimplefiedPhonologicalRepresentationOfTabooWord();
-						String lcs = SimilarityMeasures.longestCommonSubstring(simplePhonInput, simplePhonTabooWord);
-
 						float distance = WeightedMeasures.weightedLevenshteinWithLCS(simplePhonInput,
 								simplePhonTabooWord, 2, 1);
 
 						if (distance < lowestDistance) {
 
-							longestCommonSubstring = lcs;
 							lowestDistance = distance;
-							closestSimplePhonTabuWord = simplePhonTabooWord;
-							closestPhonTabooWord = phonTabuWord.getPhonologicalRepresentationOfTabooWord();
 							closestOriginalWord = phonTabuWord.getTabooWord();
 						}
 						

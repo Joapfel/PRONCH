@@ -18,6 +18,26 @@ import com.ws1718.ismla.shared.TabooWordSummary;
 
 import junit.framework.TestCase;
 
+
+
+
+
+
+
+
+
+
+/**
+ * 
+ * 
+ * not used
+ * 
+ * 
+ * 
+ * @author johannes
+ *
+ */
+
 public class ISMLAProjectTests extends TestCase {
 
 	/**********************************************

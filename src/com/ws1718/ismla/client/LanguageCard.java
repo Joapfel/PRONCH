@@ -15,7 +15,6 @@ public class LanguageCard extends Composite{
 
 	interface LanguageCardUiBinder extends UiBinder<Widget, LanguageCard> {
 	}
-	private final MyResources resources = GWT.create(MyResources.class);
 
 	public LanguageCard() {
 		initWidget(uiBinder.createAndBindUi(this));	

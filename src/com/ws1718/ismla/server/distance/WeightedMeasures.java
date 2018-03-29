@@ -82,9 +82,7 @@ public class WeightedMeasures {
 			if(after > 0){
 				after = after / longerDistAfter;
 			}
-			
-			
-			
+
 			distance = (before * prefixWeight) + (after * suffixWeight);
 			distance = distance / 2;
 

@@ -50,10 +50,6 @@ public class PhoneticTransliterator {
 				rval.put(c, GeneralTransliterator.prncToIPA(c.code(), transliteratedInput));
 			}
 		}
-		
-		//thai is mapped to IPA directly
-		//EN not supported
-		//FRA not supported
 
 		return rval;
 	}
@@ -121,8 +117,6 @@ public class PhoneticTransliterator {
 		return rval;
 	}
 
-	
-	//TODO: the two below methods contain similar code -> extract that
 	
 	/**
 	 * creates a simplified version of the phonological representation via
