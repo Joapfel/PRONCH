@@ -63,7 +63,7 @@ public class TokenTabooFinderUiBinder extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		sendRequest();
 		
-		cardContainer.setStyleName("row justify-content-center");System.out.println("__start__");
+		cardContainer.setStyleName("row justify-content-center");
 	}
 	
 	@UiField
@@ -92,6 +92,7 @@ public class TokenTabooFinderUiBinder extends Composite {
 					
 					
 					loader.setResource(resources.ajaxLoader());
+					loader.setVisible(true);
 					cardContainer.clear();
 					applicationBody.setVisible(false);
 
